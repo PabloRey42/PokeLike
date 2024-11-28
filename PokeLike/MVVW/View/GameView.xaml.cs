@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PokeLike.MVVW.View
 {
-    /// <summary>
-    /// Interaction logic for GameView.xaml
-    /// </summary>
     public partial class GameView : Page
     {
         public GameView()

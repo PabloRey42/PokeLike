@@ -12,19 +12,15 @@ public class UserService
         _context = context;
     }
 
-    // Méthode pour enregistrer un utilisateur
     public bool RegisterUser(string username, string password)
     {
-        // Vérifiez si l'utilisateur existe déjà
         if (_context.Logins.Any(u => u.Username == username))
         {
-            return false; // L'utilisateur existe déjà
+            return false; 
         }
 
-        // Hash du mot de passe
         var hashedPassword = HashPassword(password);
 
-        // Créez un nouvel utilisateur
         var newUser = new Login
         {
             Username = username,
@@ -36,20 +32,17 @@ public class UserService
         return true;
     }
 
-    // Méthode pour valider les identifiants
     public bool ValidateCredentials(string username, string password)
     {
         var user = _context.Logins.SingleOrDefault(u => u.Username == username);
         if (user == null)
         {
-            return false; // Utilisateur non trouvé
+            return false;
         }
 
-        // Vérifiez le mot de passe
         return user.PasswordHash == HashPassword(password);
     }
 
-    // Fonction pour hasher un mot de passe (SHA-256)
     private string HashPassword(string password)
     {
         using (var sha256 = SHA256.Create())

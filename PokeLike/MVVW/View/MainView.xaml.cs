@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PokeLike.MVVW.View
 {
-    /// <summary>
-    /// Interaction logic for MainView.xaml
-    /// </summary>
     public partial class MainView : Page
     {
         public MainView()
@@ -34,6 +31,32 @@ namespace PokeLike.MVVW.View
         {
             this.NavigationService.Navigate(new LoginView());
         }
+
+        private void PreviousTrack_Click(object sender, RoutedEventArgs e)
+        {
+            BackgroundMusicManager.Instance.PreviousTrack();
+        }
+
+        private void NextTrack_Click(object sender, RoutedEventArgs e)
+        {
+            BackgroundMusicManager.Instance.NextTrack();
+        }
+
+        private void PauseMusic_Click(object sender, RoutedEventArgs e)
+        {
+            BackgroundMusicManager.Instance.Pause();
+        }
+
+        private void PlayMusic_Click(object sender, RoutedEventArgs e)
+        {
+            BackgroundMusicManager.Instance.Play();
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            BackgroundMusicManager.Instance.SetVolume(e.NewValue);
+        }
+
 
 
     }

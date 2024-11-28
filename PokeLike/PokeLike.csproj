@@ -11,6 +11,9 @@
   <ItemGroup>
     <None Remove="Assets\BackgroundLogin.jpg" />
     <None Remove="Assets\BackgroundVideo.mp4" />
+    <None Remove="Assets\Music1.mp3" />
+    <None Remove="Assets\Music2.mp3" />
+    <None Remove="Assets\Music3.mp3" />
     <None Remove="Assets\PokemonBackground.jpg" />
   </ItemGroup>
 
@@ -36,6 +39,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\BackgroundVideo.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Music1.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Music2.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Music3.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\PokemonBackground.jpg">

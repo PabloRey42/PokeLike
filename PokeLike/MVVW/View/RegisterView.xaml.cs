@@ -13,14 +13,12 @@ namespace PokeLike.MVVW.View
         {
             InitializeComponent();
 
-            // Initialisation du contexte et du service
             var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
             optionsBuilder.UseSqlServer("Server=Hum;Database=ExerciceMonster;Trusted_Connection=True;TrustServerCertificate=True;");
             var dbContext = new ExerciceMonsterContext(optionsBuilder.Options);
             _userService = new UserService(dbContext);
         }
 
-        // Gestion de l'inscription
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
@@ -39,11 +37,9 @@ namespace PokeLike.MVVW.View
                 return;
             }
 
-            // Enregistrer l'utilisateur
             if (_userService.RegisterUser(username, password))
             {
                 MessageBox.Show("Compte créé avec succès !");
-                // Retour à la page de connexion ou autre action
                 this.NavigationService?.Navigate(new LoginView());
             }
             else
@@ -52,7 +48,6 @@ namespace PokeLike.MVVW.View
             }
         }
 
-        // Gestion du placeholder pour le TextBox (Nom d'utilisateur)
         private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UsernamePlaceholder.Visibility = string.IsNullOrEmpty(UsernameTextBox.Text)
@@ -60,7 +55,6 @@ namespace PokeLike.MVVW.View
                 : Visibility.Hidden;
         }
 
-        // Gestion du placeholder pour le PasswordBox (Mot de passe)
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             PasswordPlaceholder.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
@@ -68,7 +62,6 @@ namespace PokeLike.MVVW.View
                 : Visibility.Hidden;
         }
 
-        // Gestion du placeholder pour le PasswordBox (Confirmation du mot de passe)
         private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ConfirmPasswordPlaceholder.Visibility = string.IsNullOrEmpty(ConfirmPasswordBox.Password)

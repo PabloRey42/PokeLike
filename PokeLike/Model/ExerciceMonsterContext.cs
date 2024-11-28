@@ -13,6 +13,7 @@ public partial class ExerciceMonsterContext : DbContext
     public ExerciceMonsterContext(DbContextOptions<ExerciceMonsterContext> options)
         : base(options)
     {
+
     }
 
     public virtual DbSet<Login> Logins { get; set; }
