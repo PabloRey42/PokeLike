@@ -3,7 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Register">
     <Grid>
+
+        <Image Source="/Assets/PokemonBackground.jpg" 
+               Stretch="Fill" 
+               Opacity="0.8"
+               ImageFailed="OnImageFailed"/>
+
+        <!-- Overlay pour un effet de fondu -->
+        <Rectangle Fill="Black" 
+                   Opacity="0.4"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+
             <!-- Titre -->
             <TextBlock Text="Créer un compte"
                        FontSize="24"

@@ -13,9 +13,10 @@ namespace PokeLike.MVVW.View
         {
             InitializeComponent();
 
-            var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
-            optionsBuilder.UseSqlServer("Server=Hum;Database=ExerciceMonster;Trusted_Connection=True;TrustServerCertificate=True;");
-            var dbContext = new ExerciceMonsterContext(optionsBuilder.Options);
+            //var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
+            //optionsBuilder.UseSqlServer("Server=Hum;Database=ExerciceMonster;Trusted_Connection=True;TrustServerCertificate=True;");
+            //var dbContext = new ExerciceMonsterContext(optionsBuilder.Options);
+            var dbContext = new ExerciceMonsterContext();
             _userService = new UserService(dbContext);
         }
 

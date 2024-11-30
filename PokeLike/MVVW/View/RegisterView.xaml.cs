@@ -9,6 +9,11 @@ namespace PokeLike.MVVW.View
     {
         private readonly UserService _userService;
 
+        private void OnImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            MessageBox.Show($"Erreur de chargement de l'image : {e.ErrorException.Message}");
+        }
+
         public RegisterView()
         {
             InitializeComponent();

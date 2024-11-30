@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
+using Microsoft.EntityFrameworkCore;
+using PokeLike.Model;
+using PokeLike.Services;
 
 namespace PokeLike
 {
@@ -9,26 +11,11 @@ namespace PokeLike
         {
             base.OnStartup(e);
 
-            try
+            var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
+            optionsBuilder.UseSqlServer("Server=VotreServeur;Database=VotreBaseDeDonnées;Trusted_Connection=True;TrustServerCertificate=True;");
+            using (var context = new ExerciceMonsterContext(optionsBuilder.Options))
             {
-                // Liste des chemins des musiques
-                var playlist = new List<string>
-                {
-                    "Assets/Music1.mp3",
-                    "Assets/Music2.mp3",
-                    "Assets/Music3.mp3"
-                };
-
-                // Charger la playlist
-                var musicManager = BackgroundMusicManager.Instance;
-                musicManager.LoadPlaylist(playlist);
-
-                // Démarrer la musique
-                musicManager.Play();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erreur au démarrage de l'application : {ex.Message}");
+                DatabaseSeeder.SeedDatabase(context);
             }
         }
     }
