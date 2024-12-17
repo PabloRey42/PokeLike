@@ -1,27 +1,34 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Microsoft.EntityFrameworkCore;
-using PokeLike.Model;
 
 namespace PokeLike.MVVW.View
 {
     public partial class RegisterView : Page
     {
-        private readonly UserService _userService;
+        private readonly Frame _mainFrame;
 
-        private void OnImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-            MessageBox.Show($"Erreur de chargement de l'image : {e.ErrorException.Message}");
-        }
-
-        public RegisterView()
+        public RegisterView(Frame mainFrame)
         {
             InitializeComponent();
+            _mainFrame = mainFrame;
+        }
 
-            var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
-            optionsBuilder.UseSqlServer("Server=Hum;Database=ExerciceMonster;Trusted_Connection=True;TrustServerCertificate=True;");
-            var dbContext = new ExerciceMonsterContext(optionsBuilder.Options);
-            _userService = new UserService(dbContext);
+        private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UsernamePlaceholder.Visibility = string.IsNullOrEmpty(UsernameTextBox.Text)
+                ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordPlaceholder.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
+                ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ConfirmPasswordPlaceholder.Visibility = string.IsNullOrEmpty(ConfirmPasswordBox.Password)
+                ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -30,7 +37,7 @@ namespace PokeLike.MVVW.View
             string password = PasswordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("Veuillez remplir tous les champs.");
                 return;
@@ -42,36 +49,13 @@ namespace PokeLike.MVVW.View
                 return;
             }
 
-            if (_userService.RegisterUser(username, password))
-            {
-                MessageBox.Show("Compte créé avec succès !");
-                this.NavigationService?.Navigate(new LoginView());
-            }
-            else
-            {
-                MessageBox.Show("Nom d'utilisateur déjà utilisé !");
-            }
+            MessageBox.Show($"Compte créé avec succès pour l'utilisateur : {username}");
+            _mainFrame.Navigate(new LoginView(_mainFrame));
         }
 
-        private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            UsernamePlaceholder.Visibility = string.IsNullOrEmpty(UsernameTextBox.Text)
-                ? Visibility.Visible
-                : Visibility.Hidden;
-        }
-
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            PasswordPlaceholder.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
-                ? Visibility.Visible
-                : Visibility.Hidden;
-        }
-
-        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            ConfirmPasswordPlaceholder.Visibility = string.IsNullOrEmpty(ConfirmPasswordBox.Password)
-                ? Visibility.Visible
-                : Visibility.Hidden;
+            _mainFrame.Navigate(new LoginView(_mainFrame));
         }
     }
 }

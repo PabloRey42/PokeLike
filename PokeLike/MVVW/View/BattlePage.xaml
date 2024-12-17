@@ -1,0 +1,67 @@
+﻿<Page x:Class="PokeLike.MVVW.View.BattlePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Combat Pokémon">
+
+    <!-- Grid principale -->
+    <Grid>
+        <!-- Image en fond -->
+        <Image Source="/Assets/Arène.jpg" Stretch="Fill" Panel.ZIndex="0" />
+
+        <!-- Contenu principal -->
+        <Grid Background="Transparent" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Titre -->
+                <RowDefinition Height="*"/>
+                <!-- Zone Pokémon -->
+                <RowDefinition Height="Auto"/>
+                <!-- Boutons Attaque -->
+                <RowDefinition Height="Auto"/>
+                <!-- Bouton Rechoisir -->
+            </Grid.RowDefinitions>
+
+            <!-- Titre -->
+            <TextBlock Text="Combat Pokémon" FontSize="28" FontWeight="Bold"
+                       HorizontalAlignment="Center" Grid.Row="0" Margin="0,10" Foreground="Black"/>
+
+            <!-- Zone des Pokémon -->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Joueur -->
+                <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                    <StackPanel>
+                        <TextBlock x:Name="PlayerMonsterName" Text="Votre Pokémon" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <ProgressBar x:Name="PlayerHPBar" Height="20" Margin="0,10" Maximum="100" Value="100"/>
+                        <TextBlock x:Name="PlayerHPText" Text="HP: 100/100" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Ennemi -->
+                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                    <StackPanel>
+                        <TextBlock x:Name="EnemyMonsterName" Text="Pokémon Ennemi" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <ProgressBar x:Name="EnemyHPBar" Height="20" Margin="0,10" Maximum="100" Value="100"/>
+                        <TextBlock x:Name="EnemyHPText" Text="HP: 100/100" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Boutons pour les attaques -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                <Button x:Name="AttackButton1" Content="Attaque 1" Width="120" Margin="10" Click="AttackButton_Click"/>
+                <Button x:Name="AttackButton2" Content="Attaque 2" Width="120" Margin="10" Click="AttackButton_Click"/>
+                <Button x:Name="AttackButton3" Content="Attaque 3" Width="120" Margin="10" Click="AttackButton_Click"/>
+                <Button x:Name="AttackButton4" Content="Attaque 4" Width="120" Margin="10" Click="AttackButton_Click"/>
+            </StackPanel>
+
+            <!-- Bouton pour rechoisir un Pokémon -->
+            <Button Grid.Row="3" Content="Rechoisir un Pokémon" Width="200" Height="40"
+                    HorizontalAlignment="Center" Margin="0,20,0,0" Click="RechoosePokemon_Click"/>
+        </Grid>
+    </Grid>
+</Page>

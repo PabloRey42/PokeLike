@@ -70,12 +70,6 @@
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
                         Margin="0,0,0,10"/>
-
-                <Button Content="Précédent" Click="PreviousTrack_Click" Width="80" Margin="5"/>
-                <Button Content="Pause" Click="PauseMusic_Click" Width="80" Margin="5"/>
-                <Button Content="Reprendre" Click="PlayMusic_Click" Width="80" Margin="5"/>
-                <Button Content="Suivant" Click="NextTrack_Click" Width="80" Margin="5"/>
-                <Slider Minimum="0" Maximum="1" Value="0.5" ValueChanged="VolumeSlider_ValueChanged" Width="150" Margin="5"/>
             </StackPanel>
         </StackPanel>
     </Grid>
