@@ -1,0 +1,38 @@
+﻿<Page x:Class="PokeLike.MVVW.View.OptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Options">
+    <Grid Background="#e3e3e3">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <TextBlock Text="Configurer le serveur SQL"
+                       FontSize="20" FontWeight="Bold" 
+                       Margin="0,0,0,20" TextAlignment="Center"/>
+
+            <!-- Placeholder simulé pour TextBox -->
+            <Grid>
+                <TextBox x:Name="ServerInputTextBox"
+                         Height="30" 
+                         Margin="0,0,0,10"
+                         TextChanged="ServerInputTextBox_TextChanged"/>
+                <TextBlock x:Name="PlaceholderTextBlock"
+                           Text="Entrez le nom du serveur"
+                           Foreground="Gray"
+                           VerticalAlignment="Center"
+                           Margin="5,0,0,0"
+                           IsHitTestVisible="False"/>
+            </Grid>
+
+            <!-- Bouton de sauvegarde -->
+            <Button Content="Enregistrer" 
+                    Width="200" Height="40"
+                    Background="#0078D7" Foreground="White"
+                    Click="SaveButton_Click"/>
+
+            <!-- Message de confirmation -->
+            <TextBlock x:Name="ConfirmationMessage"
+                       Text=""
+                       FontSize="12" Foreground="Green" Margin="0,10,0,0"
+                       TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

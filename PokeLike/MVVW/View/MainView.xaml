@@ -52,14 +52,17 @@
                         Click="StartButton_Click"/>
 
                 <Button Content="Options"
-                        Width="200"
-                        Height="50"
-                        Background="#FFD700"
-                        Foreground="Black"
-                        FontSize="16"
-                        FontWeight="Bold"
-                        HorizontalAlignment="Center"
-                        Margin="0,0,0,10"/>
+        Width="200"
+        Height="50"
+        Background="#FFD700"
+        Foreground="Black"
+        FontSize="16"
+        FontWeight="Bold"
+        HorizontalAlignment="Center"
+        Margin="0,0,0,10"
+        Click="OptionsButton_Click"/>
+
+
 
                 <Button Content="À propos"
                         Width="200"

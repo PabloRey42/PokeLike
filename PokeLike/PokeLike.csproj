@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\7941359.jpg" />
+    <None Remove="Assets\Arène.jpg" />
     <None Remove="Assets\BackgroundLogin.jpg" />
     <None Remove="Assets\BackgroundVideo.mp4" />
     <None Remove="Assets\Music1.mp3" />
@@ -35,6 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\7941359.jpg" />
+    <Resource Include="Assets\Arène.jpg" />
     <Resource Include="Assets\BackgroundLogin.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

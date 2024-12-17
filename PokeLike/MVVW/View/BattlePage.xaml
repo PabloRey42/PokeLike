@@ -6,7 +6,7 @@
     <!-- Grid principale -->
     <Grid>
         <!-- Image en fond -->
-        <Image Source="/Assets/Arène.jpg" Stretch="Fill" Panel.ZIndex="0" />
+        <Image Source="/Assets/Arène.jpg" Stretch="Fill" Panel.ZIndex="0"/>
 
         <!-- Contenu principal -->
         <Grid Background="Transparent" Margin="10">
@@ -33,34 +33,63 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Joueur -->
-                <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                <Border Grid.Column="0" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                            <!-- Blanc -->
+                            <GradientStop Color="#F0E68C" Offset="1.0"/>
+                            <!-- Jaune Clair -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.OpacityMask>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="White" Offset="0.3"/>
+                            <GradientStop Color="Black" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.OpacityMask>
                     <StackPanel>
-                        <TextBlock x:Name="PlayerMonsterName" Text="Votre Pokémon" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="PlayerMonsterName" Text="Votre Pokémon" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black"/>
                         <ProgressBar x:Name="PlayerHPBar" Height="20" Margin="0,10" Maximum="100" Value="100"/>
-                        <TextBlock x:Name="PlayerHPText" Text="HP: 100/100" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="PlayerHPText" Text="HP: 100/100" HorizontalAlignment="Center" Foreground="Black"/>
                     </StackPanel>
                 </Border>
 
                 <!-- Ennemi -->
-                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                <Border Grid.Column="1" CornerRadius="10" Padding="10" Margin="10" BorderBrush="Black" BorderThickness="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                            <!-- Blanc -->
+                            <GradientStop Color="#FF6347" Offset="1.0"/>
+                            <!-- Rouge Clair -->
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.OpacityMask>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="White" Offset="0.3"/>
+                            <GradientStop Color="Black" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.OpacityMask>
                     <StackPanel>
-                        <TextBlock x:Name="EnemyMonsterName" Text="Pokémon Ennemi" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="EnemyMonsterName" Text="Pokémon Ennemi" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black"/>
                         <ProgressBar x:Name="EnemyHPBar" Height="20" Margin="0,10" Maximum="100" Value="100"/>
-                        <TextBlock x:Name="EnemyHPText" Text="HP: 100/100" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="EnemyHPText" Text="HP: 100/100" HorizontalAlignment="Center" Foreground="Black"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
             <!-- Boutons pour les attaques -->
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-                <Button x:Name="AttackButton1" Content="Attaque 1" Width="120" Margin="10" Click="AttackButton_Click"/>
-                <Button x:Name="AttackButton2" Content="Attaque 2" Width="120" Margin="10" Click="AttackButton_Click"/>
-                <Button x:Name="AttackButton3" Content="Attaque 3" Width="120" Margin="10" Click="AttackButton_Click"/>
-                <Button x:Name="AttackButton4" Content="Attaque 4" Width="120" Margin="10" Click="AttackButton_Click"/>
+                <Button x:Name="AttackButton1" Content="Attaque 1" Width="120" Height="50" Margin="10" Click="AttackButton_Click" Background="#FFD700" Foreground="Black" FontWeight="Bold" BorderThickness="2"/>
+                <Button x:Name="AttackButton2" Content="Attaque 2" Width="120" Height="50" Margin="10" Click="AttackButton_Click" Background="#FF8C00" Foreground="Black" FontWeight="Bold" BorderThickness="2"/>
+                <Button x:Name="AttackButton3" Content="Attaque 3" Width="120" Height="50" Margin="10" Click="AttackButton_Click" Background="#FF6347" Foreground="Black" FontWeight="Bold" BorderThickness="2"/>
+                <Button x:Name="AttackButton4" Content="Attaque 4" Width="120" Height="50" Margin="10" Click="AttackButton_Click" Background="#90EE90" Foreground="Black" FontWeight="Bold" BorderThickness="2"/>
             </StackPanel>
 
             <!-- Bouton pour rechoisir un Pokémon -->
             <Button Grid.Row="3" Content="Rechoisir un Pokémon" Width="200" Height="40"
+                    Background="#0078D7" Foreground="White" FontWeight="Bold"
                     HorizontalAlignment="Center" Margin="0,20,0,0" Click="RechoosePokemon_Click"/>
         </Grid>
     </Grid>

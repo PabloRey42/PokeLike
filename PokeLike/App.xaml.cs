@@ -1,7 +1,4 @@
 ﻿using System.Windows;
-using Microsoft.EntityFrameworkCore;
-using PokeLike.Model;
-using PokeLike.Services;
 
 namespace PokeLike
 {
@@ -11,17 +8,7 @@ namespace PokeLike
         {
             base.OnStartup(e);
 
-            // Configuration de la base de données
-            var optionsBuilder = new DbContextOptionsBuilder<ExerciceMonsterContext>();
-            optionsBuilder.UseSqlServer("Server=VotreServeur;Database=VotreBaseDeDonnées;Trusted_Connection=True;TrustServerCertificate=True;");
-
-            using (var context = new ExerciceMonsterContext(optionsBuilder.Options))
-            {
-                // Seed de la base de données
-                DatabaseSeeder.SeedDatabase(context);
-            }
-
-            // Création et lancement unique de MainWindow
+            // Lancer la MainWindow sans se connecter immédiatement à la base de données
             var mainWindow = new MainWindow();
             mainWindow.Show();
         }

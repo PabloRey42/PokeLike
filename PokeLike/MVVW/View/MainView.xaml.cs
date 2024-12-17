@@ -7,27 +7,22 @@ namespace PokeLike.MVVW.View
     {
         private readonly Frame _mainFrame;
 
-        // Constructeur par défaut requis par WPF
-        public MainView()
-        {
-            InitializeComponent();
-        }
-
-        // Constructeur avec Frame pour la navigation
         public MainView(Frame mainFrame)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
         }
 
-        // Bouton pour démarrer le jeu et naviguer vers LoginView
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            // Naviguer vers LoginView en passant la même Frame
-            _mainFrame?.Navigate(new LoginView(_mainFrame));
+            _mainFrame.Navigate(new LoginView(_mainFrame));
         }
 
-        // Gestion des erreurs d'image
+        private void OptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new OptionsPage(_mainFrame));
+        }
+
         private void OnImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
             MessageBox.Show($"Erreur de chargement de l'image : {e.ErrorException.Message}");
